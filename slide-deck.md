@@ -17,6 +17,12 @@ img[alt~="center"] {
 }
 </style>
 
+<!-- _class: lead -->
+
+# Title Slide
+
+---
+
 # Slide 1
 <div class="columns">
 <div class="columns-left">
