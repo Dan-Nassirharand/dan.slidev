@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: gaia
+theme: default
 backgroundColor: white
 style: |
   .columns {
@@ -29,7 +29,7 @@ img[alt~="center"] {
 
 - `a` is defined as a variable that can be changed.
 - `a` is set equal to 1
-- `a`'s valus is then increased by one
+- `a`'s value is then increased by one
 
 </div>
 <div class="columns-right">
