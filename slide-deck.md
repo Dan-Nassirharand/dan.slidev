@@ -10,6 +10,13 @@ style: |
   }
 ---
 
+<style>
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+</style>
+
 # Slide 1
 <div class="columns">
 <div class="columns-left">
@@ -25,6 +32,7 @@ style: |
 let a = 1;
 a++;
 ```
+![center](./something.png)
 
 </div>
 </div>
