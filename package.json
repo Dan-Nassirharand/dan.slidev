@@ -1,0 +1,15 @@
+{
+  "name": "sw-a-course.startup-code-slides",
+  "version": "1.0.0",
+  "description": "Slides for a course",
+  "main": "index.js",
+  "scripts": {
+    "pdf": "mkdir -p artifacts && npx @marp-team/marp-cli@latest slide-deck.md --html -o artifacts/slide-deck.pdf",
+    "ppt": "mkdir -p artifacts && npx @marp-team/marp-cli@latest slide-deck.md --html -o artifacts/slide-deck.pptx"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@marp-team/marp-cli": "^3.1.0"
+  }
+}

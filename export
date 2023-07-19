@@ -1,0 +1,6 @@
+set -e
+
+source $NVM_DIR/nvm.sh
+
+npm run pdf
+npm run ppt
