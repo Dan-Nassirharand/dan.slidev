@@ -1,0 +1,40 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+
+jobs:
+  setup:
+    uses: geappliances/skynet.workflow/.github/workflows/setup-workflow.yml@v1
+    secrets: inherit
+    permissions:
+      id-token: write
+      contents: read
+
+  export:
+    uses: geappliances/skynet.workflow/.github/workflows/build-workflow.yml@v1
+    needs: setup
+    secrets: inherit
+    with:
+      job-name: export
+      script: export
+      runs-on: skynet-linux-x64
+    permissions:
+      id-token: write
+      contents: read
+
+  email-on-failure:
+    uses: geappliances/skynet.workflow/.github/workflows/email-workflow.yml@v1
+    if: ${{ (cancelled() || failure()) && github.event_name != 'pull_request' }}
+    needs: [export]
+    secrets: inherit
+    permissions:
+      id-token: write
+      contents: read
+    with:
+      recipients: christopher.beeler@geappliances.com
+      status: Failure
