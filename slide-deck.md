@@ -63,7 +63,7 @@ SECTIONS
 </div>
 <div class="columns-right">
 
-![center](./assets/linker-order-matters/diagram.png)
+![center](assets/linker-order-matters/diagram.png)
 
 </div>
 </div>
