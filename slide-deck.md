@@ -19,32 +19,51 @@ img[alt~="center"] {
 
 <!-- _class: lead -->
 
-# Title Slide
+# Startup Code
+Chris Beeler
 
 ---
 
-# Slide 1
+# Hello, World!
+This program starts at main, right? That’s what I was taught in school!
+
+```
+#include <stdio.h>
+
+int main()
+{
+   printf("Hello, World!\n");
+   return 0;
+}
+```
+
+```
+$ gcc hello.c -o hello.o
+$ ./hello.o
+Hello, World!
+```
+
+---
+# Side Quest - Order Matters
 <div class="columns">
 <div class="columns-left">
 
-- `a` is defined as a variable that can be changed.
-- `a` is set equal to 1
-- `a`'s value is then increased by one
+```
+SECTIONS
+{
+  .text :
+  {
+    KEEP(*(.fixedVectors))
+    *(.text*)
+    *(.rodata*)
+  } > FLASH
+}
+```
 
 </div>
 <div class="columns-right">
 
-```
-let a = 1;
-a++;
-```
-![center](./something.png)
+![center](./assets/linker-order-matters/diagram.png)
 
 </div>
 </div>
-
----
-
-# Slide 2
-
-foobar
