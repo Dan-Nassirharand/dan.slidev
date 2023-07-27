@@ -2,7 +2,7 @@
 layout: two-cols
 ---
 
-# Hello, World!s
+# Hello, World!
 
 Whats in the binary?
 
@@ -36,3 +36,22 @@ Second Click:
 address: machine code assembly representation
 
 -->
+
+---
+
+# Hello, World!
+
+The code written in the `main` of `hello.c` is a very small portion of the binary:
+
+```ini {all|7|8-9}
+0000000000001149 <main>:
+    1149:	f3 0f 1e fa          	endbr64
+    114d:	55                   	push   %rbp
+    114e:	48 89 e5             	mov    %rsp,%rbp
+    1151:	48 8d 05 ac 0e 00 00 	lea    0xeac(%rip),%rax        # 2004 <_IO_stdin_used+0x4>
+    1158:	48 89 c7             	mov    %rax,%rdi
+    115b:	e8 f0 fe ff ff       	call   1050 <puts@plt>
+    1160:	b8 00 00 00 00       	mov    $0x0,%eax
+    1165:	5d                   	pop    %rbp
+    1166:	c3                   	ret
+```

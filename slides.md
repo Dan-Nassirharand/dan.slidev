@@ -1,7 +1,7 @@
 ---
 theme: apple-basic
 layout: intro
-colorSchema: light
+colorSchema: dark
 ---
 
 # Startup Code
@@ -15,12 +15,12 @@ src: ./hello-world/hello-world.md
 layout: two-cols
 ---
 
-# Side Quest - Order Matters
+# Order Matters
 
 ```ld
 SECTIONS
 {
-  .text :
+  .text:
   {
     KEEP(*(.fixedVectors))
     *(.text*)
@@ -32,3 +32,25 @@ SECTIONS
 ::right::
 
 ![center](assets/linker-order-matters/diagram.png)
+
+---
+layout: two-cols
+---
+
+# Order Matters
+
+```ld
+SECTIONS
+{
+  .text:
+  {
+    *(.text*)
+    KEEP(*(.fixedVectors))
+    *(.rodata*)
+  } > FLASH
+}
+```
+
+::right::
+
+![center](assets/linker-order-matters/fixedVectorsMiddle.png)

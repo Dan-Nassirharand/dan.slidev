@@ -2,7 +2,9 @@ set -e
 
 source $NVM_DIR/nvm.sh
 
+nvm install
 nvm use
+
 npm i
 mkdir -p artifacts
 npm run export
