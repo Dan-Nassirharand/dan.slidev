@@ -4,12 +4,22 @@
   "description": "Slides for a course",
   "main": "index.js",
   "scripts": {
-    "pdf": "mkdir -p artifacts && npx @marp-team/marp-cli@latest slide-deck.md --html -o artifacts/slide-deck.pdf",
-    "ppt": "mkdir -p artifacts && npx @marp-team/marp-cli@latest slide-deck.md --html -o artifacts/slide-deck.pptx"
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "slidev export --output artifacts/slides.pdf",
+    "present": "slidev --open --remote"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@marp-team/marp-cli": "^3.1.0"
+    "@slidev/cli": "^0.42.5",
+    "@slidev/theme-apple-basic": "^0.20.0",
+    "@slidev/theme-bricks": "^0.0.2",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "slidev-theme-geist": "^0.8.1"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.36.2"
   }
 }

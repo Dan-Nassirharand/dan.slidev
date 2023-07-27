@@ -1,3 +1,8 @@
 set -e
 
-docker run --rm -v $PWD:/home/marp/app/ -e LANG=$LANG -e MARP_USER="$(id -u):$(id -g)" marpteam/marp-cli slide-deck.md --html -o artifacts/slide-deck.pptx
+source $NVM_DIR/nvm.sh
+
+nvm use
+npm i
+mkdir -p artifacts
+npm run export
