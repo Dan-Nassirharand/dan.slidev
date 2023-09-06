@@ -1,0 +1,145 @@
+- Building/Toolchains
+  - What is a toolchain?
+    - Probably find a good definition
+    - Lots of parts, but modern compilers tend to do many of them for you unless you request otherwise
+    - Parts of a C/C++ toolchain
+      - Preprocessor
+        - Replaces macros with their definitions
+        - Pastes in header and other files that are included with `#include`
+        - gcc -E to run preprocessor
+      - Compiler
+        - Generates assembly from code in high-level language
+        - gcc -S to run compiler and get the assembly out
+      - Assembler
+        - Why is this separate from the compiler?
+          - Lets us write assembly, for one
+          - Allows the same assembler to be used with many language-specific front ends
+        - Can generate runnable binaries or relocatable object files
+        - gcc -c to run assembler and get object file out
+      - Linker
+        - Resolves all the references between object files
+        - Linker script configures it to tell it where to put everything
+        - Poops out a map file to tell you what it did
+
+  - Object files
+    - Pieces of a program that can be put together by the linker
+      - Includes symbols available for other object files to use
+      - Includes unresolved references that can be resolved using symbols exported by other object files
+      - Includes relocation information since the object files doesn't get a "home" in memory until linking
+    - Relocatable whatever
+    - objdump to dump symbol table and relocations(?)
+      - `nm` also does this?
+    - objdump to disassemble
+    - `static` vs `extern`
+
+  - ELF
+    - Executable and Linker Format
+    - Includes the actually code and whatnot
+    - Includes a bunch of extra crap
+      - Debug symbols (DWARF (play on ELF, has no acronym meaning), usually)
+    - Usually debug with this
+
+  - bin
+    - Raw ass binary data
+
+  - mot/srec, ihex
+    - Human readable
+    - Why?
+      - Encodes address information
+        - Allows images that don't start at 0
+        - Allows images with holes in them
+
+  - Debugging build problems? (seems out of place, but this stuff should probably go somewhere)
+    - See output of the preprocessor
+    - Compiler error vs. Linker error
+    - ...
+
+- Makefiles
+  - What's the point?
+  - Recipes and targets
+  - Phony
+  - Variables
+    - = vs. :=
+  - Automatic variables
+  - Pattern rules
+  - Order-only prerequisites
+  - Generated dependencies (.d files)
+  - Functions/defines
+  - gmsl
+  - eval
+  - Conditionals
+  - Recursive make
+  - Non-recursive make
+  - Debugging tools
+    - `$(info)`
+    - `make --dry-run`
+    - `make --debug`
+    - `make --trace`
+  - Automatic rules for C
+
+- Build Systems (Makefile + Toolchain)
+  - Combines make/ninja/etc., toolchains, other tools, etc. in a way that restricts options but presents a simpler interface
+  - make is not a build system, or if it is, it's a very low level build system
+    - ninja is another low level build system that's more like an assembler
+  - Others are higher level (check on this)
+    - Meson
+    - SCons?
+    - xmake
+  - Other tools are build system generators (meta build systems)
+    - CMake
+    - Autotools (autohell)
+
+- GEA Build System (v2)
+  - Why?
+    - History lesson v1
+    - Fine control over flags/configurations for different files
+    - Reusable libraries
+    - Hard stuff like out-of-tree builds by default
+    - Gets dependencies right
+      - Dependent upon build flags
+      - Dependeng upon makefiles determining build rules
+    - Pluggable compiler backends
+  - Built on top of makecommon/targetcommon
+  - Structure
+    - setup.mk
+      - Includes non-recipe dependencies
+      - Defines functions and whatnot
+    - defaults.mk
+      - Optional defaults for configuration variables
+    - worker.mk
+      - Includes recipes that actually do the work
+  - Examples
+    - llvm-rl78
+    - kpit-rx
+    - kpit-rl78
+    - sdcc-stm8
+    - gcc-arm-none-eabi
+    - host tools (todo need to extract this)
+
+- Lab/homework
+  - Would like to make it so that incorrect dependencies can make an incorrect build
+    - Missing the .ds where you change a header file and it all goes to hell
+    - Don't have dependencies on build flags or the build system itself
+  - Part 1
+    - C file
+      - gcc -E, -S, -c
+      - addr2line
+      - objdump
+      - nm?
+      - `file`
+    - Simple C program
+      - Start with shell commands to compile
+      - Makefile auto rules
+      - Then manually write rules (wildcard?)
+        - Dependencies between .o and .c
+        - Dependencies between .elf and .os
+        - Change a .c, see the .o get rebuilt and then the .elf
+      - Then add dependency file generation
+        - Change a .h, see the .o get rebuilt
+      - In-tree build
+  - Part 2
+    - Do the above makefile using v2
+    - Extract a v2 lib
+    - Use different flags for main blob and lib
+      - Could do debug vs. not, etc.
+    - Builds into output folder instead of in tree
