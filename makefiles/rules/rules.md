@@ -22,4 +22,5 @@ all:
 ```
 
 ::right::
+
 Where will file.txt be placed and why?

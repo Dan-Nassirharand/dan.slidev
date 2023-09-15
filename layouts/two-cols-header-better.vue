@@ -45,11 +45,11 @@ const props = defineProps({
 <style scoped>
 .two-cols-header {
   display: grid;
-  grid-template-columns: 1fr 10px 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 2% 1fr;
+  grid-template-rows: auto 2% 1fr;
 }
 
 .col-header { grid-area: 1 / 1 / 2 / 4; }
-.col-left { grid-area: 2 / 1 / 3 / 2; }
-.col-right { grid-area: 2 / 3 / 3 / 3; }
+.col-left { grid-area: 3 / 1 / 3 / 2; }
+.col-right { grid-area: 3 / 3 / 3 / 3; }
 </style>
