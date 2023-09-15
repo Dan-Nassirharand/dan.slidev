@@ -1,7 +1,6 @@
 ---
 theme: default
 layout: intro
-colorSchema: dark
 ---
 
 # Toolchains and Makefiles

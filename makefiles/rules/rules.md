@@ -1,5 +1,5 @@
 ---
-layout: two-cols-header-better
+layout: applcommon-two-cols-header
 ---
 
 # Rules and Recipes
