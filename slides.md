@@ -1,5 +1,5 @@
 ---
-theme: default
+theme: apple-basic
 layout: intro
 ---
 
@@ -7,5 +7,5 @@ layout: intro
 Chris Beeler
 
 ---
-src: ./makefiles/rules/rules.md
+src: ./makefiles/intro/intro.md
 ---
