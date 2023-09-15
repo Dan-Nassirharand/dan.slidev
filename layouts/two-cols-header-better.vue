@@ -33,6 +33,9 @@ const props = defineProps({
     <div class="col-left" :class="props.class">
       <slot name="left" />
     </div>
+    <div class="col-middle" :class="props.class">
+      <slot name="middle" />
+    </div>
     <div class="col-right" :class="props.class">
       <slot name="right" />
     </div>
@@ -42,11 +45,11 @@ const props = defineProps({
 <style scoped>
 .two-cols-header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 10px 1fr;
   grid-template-rows: auto 1fr;
 }
 
-.col-header { grid-area: 1 / 1 / 2 / 3; }
+.col-header { grid-area: 1 / 1 / 2 / 4; }
 .col-left { grid-area: 2 / 1 / 3 / 2; }
-.col-right { grid-area: 2 / 2 / 3 / 3; }
+.col-right { grid-area: 2 / 3 / 3 / 3; }
 </style>
