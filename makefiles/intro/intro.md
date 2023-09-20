@@ -50,7 +50,7 @@ Ponderings:
 
 - Typing `make` into the terminal will invoke the file `Makefile`.
 
-- `make -f target.mk` will invoke `target.mk`
+- `make -f target.mk` will invoke the default rule in `target.mk` (more on this later)
 
 - `make -j<n>` will allow `n` recipes to be run in parallel
 
