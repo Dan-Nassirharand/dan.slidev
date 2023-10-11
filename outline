@@ -56,13 +56,13 @@
 
 - Makefiles
   - What's the point?
-  - Recipes and targets
-  - Phony
+  - Recipes and targets (done)
+  - Phony (done)
   - Variables
     - = vs. :=
   - Automatic variables
   - Pattern rules
-  - Order-only prerequisites
+  - Order-only prerequisites (done)
   - Generated dependencies (.d files)
   - Functions/defines
   - gmsl

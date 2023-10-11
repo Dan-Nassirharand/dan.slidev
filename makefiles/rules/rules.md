@@ -111,13 +111,98 @@ target: prereq1 prereq2 prereq3
 - When running with jobs, the prerequisites can be run in parallel speeding up the entire process
 
 <!--
-Don't forget taht phony targets are always marked as needing to be rebuilt
+Don't forget that phony targets are always marked as needing to be rebuilt
 
 When making the prerequisites its important to think about what a target is truly dependent on. Putting extra or unneeded prerequisites can make the job take extra time that wastes everyone's time.
  -->
 ---
 
-# Order Only Prerequisites
+# Folder Timestamps
+
+Consider this makefile:
+
+```makefile
+build/test.o: build
+	touch build/test.o
+
+build:
+	mkdir -p build
+```
+
+On the first run, everything is created as normal
+```bash
+$ make
+mkdir -p build
+touch build/test.o
+```
+
+Running it again gives:
+
+```bash
+$ make
+make: 'build/test.o' is up to date.
+```
+
+All is good!
+
+---
+
+# Folder Timestamps
+
+Adding another file to this folder and re-running make makes `test.o` rebuild?
+```bash
+$ touch build/file.txt
+$ make
+touch build/test.o
+```
+
+This is because a folder's timestamp is updated whenever a file inside of it is edited.
+
+```bash
+$ make
+mkdir -p build
+touch build/test.o
+$ ls -l
+drwxrwxr-x   2 beeler beeler  4096 Oct 11 16:21 build
+$ touch build/file.txt
+$ ls -l
+drwxrwxr-x   2 beeler beeler  4096 Oct 11 16:23 build
+```
+
+This could cause a long process to rebuild for no reason!
+
+---
+layout: applcommon-two-cols-header
+---
+
+# Order-Only Prerequisites
+
+Prerequisites that are built before the target but do not force the target to rebuild if updated.
+
+```makefile
+target: prerequisites | order-only prerequisites
+```
+
+Using this knowledge we can fix our makefile by making the folder an order-only prerequisite:
+
+::left::
+```makefile
+build/test.o: | build
+	touch build/test.o
+
+build:
+	mkdir -p build
+```
+
+::right::
+```bash
+$ make
+mkdir -p build
+touch build/test.o
+$ touch build/file.txt
+$ make
+make: 'build/test.o' is up to date.
+```
 
 ---
 
