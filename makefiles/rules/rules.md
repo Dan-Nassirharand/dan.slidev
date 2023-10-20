@@ -212,7 +212,33 @@ We use this for tool setup too.
 src: ./../variables/variables.md
 ---
 
+---
+layout: applcommon-two-cols-header
+---
+
 # Multiple Targets
+
+- Rules can have multiple targets!
+- The target is run multiple times, it does not indicate that a rule makes two files at the same time
+
+::left::
+```makefile
+.PHONY: all
+all: foo bar
+	@echo done
+
+.PHONY: foo bar
+foo bar:
+	@echo $@
+```
+
+::right::
+```bash
+$ make
+foo
+bar
+done
+```
 
 ---
 

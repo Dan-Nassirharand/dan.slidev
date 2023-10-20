@@ -61,13 +61,14 @@
   - Variables (done)
   - = vs. := (done)
   - Automatic variables (done)
-  - Pattern rules
   - Order-only prerequisites (done)
-  - Generated dependencies (.d files)
+  - Pattern rules
+  - Automatic rules for C (Implicit rules https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html)
   - Functions/defines
-  - gmsl
   - eval
   - Conditionals
+  - Generated dependencies (.d files)
+  - gmsl
   - Recursive make
   - Non-recursive make
   - Debugging tools
@@ -75,7 +76,6 @@
     - `make --dry-run`
     - `make --debug`
     - `make --trace`
-  - Automatic rules for C (Implicit rules https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html)
 
 - Build Systems (Makefile + Toolchain)
   - Combines make/ninja/etc., toolchains, other tools, etc. in a way that restricts options but presents a simpler interface
