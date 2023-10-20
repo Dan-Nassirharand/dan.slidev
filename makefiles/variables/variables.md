@@ -148,3 +148,52 @@ Fri Oct 20 11:38:16 AM EDT 2023
 sleep 5
 Fri Oct 20 11:38:16 AM EDT 2023
 ```
+
+---
+layout: applcommon-two-cols-header
+---
+
+# Automatic Variables
+
+::left::
+
+- These variables are available in each target
+- Allow for makefiles to become much more generic
+- There are eight automatic variables
+
+Here are the most useful:
+- `$@`: The target of the rule
+- `$<`: The first prerequisite
+- `$^`: All the prerequisites
+
+::right::
+```makefile
+.PHONY: all
+all: foo bar
+	@echo all rule
+	@echo $@
+	@echo $<
+	@echo $^
+
+.PHONY: foo
+foo:
+	@echo $@
+
+.PHONY: bar
+bar:
+	@echo $@
+```
+
+```bash
+$ make
+foo
+bar
+all rule
+all
+foo
+foo bar
+```
+
+<!--
+https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
+-->
