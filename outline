@@ -58,8 +58,8 @@
   - What's the point?
   - Recipes and targets (done)
   - Phony (done)
-  - Variables
-    - = vs. :=
+  - Variables (done)
+  - = vs. := (done)
   - Automatic variables
   - Pattern rules
   - Order-only prerequisites (done)

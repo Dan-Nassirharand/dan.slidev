@@ -204,6 +204,12 @@ $ make
 make: 'build/test.o' is up to date.
 ```
 
+<!--
+We use this for tool setup too.
+-->
+
+---
+src: ./../variables/variables.md
 ---
 
 # Multiple Targets
