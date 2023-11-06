@@ -124,7 +124,7 @@ layout: applcommon-two-cols-header
 
 - Recursively expanded variables can cause all sorts of headaches
 - Use non-recursively expansion `:=` to avoid problems
-- We recommend that variables are always set with `:=`, unless it is set using `?=`
+- Use `:=`, unless it is set using `?=` or recursive behavior is desired
 
 
 ::left::

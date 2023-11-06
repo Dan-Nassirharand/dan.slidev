@@ -209,7 +209,11 @@ We use this for tool setup too.
 -->
 
 ---
-src: ./../variables/variables.md
+src: ./variables.md
+---
+
+---
+src: ./functions.md
 ---
 
 ---
@@ -239,7 +243,6 @@ foo
 bar
 done
 ```
-
 ---
 
 # Explicit Rules

@@ -7,5 +7,5 @@ layout: intro
 Chris Beeler
 
 ---
-src: ./makefiles/intro/intro.md
+src: ./makefiles/intro.md
 ---

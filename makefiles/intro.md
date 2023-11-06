@@ -55,5 +55,5 @@ Ponderings:
 - `make -j<n>` will allow `n` recipes to be run in parallel
 
 ---
-src: ./../rules/rules.md
+src: ./rules.md
 ---
