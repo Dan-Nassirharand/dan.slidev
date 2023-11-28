@@ -213,6 +213,10 @@ src: ./variables.md
 ---
 
 ---
+src: ./conditionals.md
+---
+
+---
 src: ./functions.md
 ---
 
@@ -243,6 +247,7 @@ foo
 bar
 done
 ```
+
 ---
 
 # Explicit Rules

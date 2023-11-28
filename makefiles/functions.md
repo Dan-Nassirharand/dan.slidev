@@ -3,6 +3,7 @@
 - Make has many useful built-in functions
 - Most of these revolve around text manipulation
 - Not recommended to do complicated text manipulation inside make, most of these functions are intended for makefile tasks
+- A complete list can be found in the [manual](https://www.gnu.org/software/make/manual/html_node/Functions.html).
 
 ## Making Calls
 
@@ -59,3 +60,31 @@ Makefile:2: *** testing output.  Stop.
 $ echo $?
 2
 ```
+
+---
+
+# Call function
+
+- Write your own functions!
+
+---
+
+# defines
+
+- the way we prefer to write functions
+
+---
+
+# eval
+
+- generate makefile code
+
+---
+
+# gmsl
+
+- Hopefully you never need to go this deep
+
+---
+
+# move onto conditionals in another file?
