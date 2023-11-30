@@ -42,7 +42,7 @@ $(error $(var))
 
 .PHONY: all
 all:
-  @echo done
+	@echo done
 ```
 ::topRight::
 ```bash
@@ -62,16 +62,99 @@ $ echo $?
 ```
 
 ---
+layout: applcommon-two-cols-header
+---
 
 # Call function
 
 - Write your own functions!
+- `call` is the built-in function used to call a variable or define function
+- Arguments are variables that start at 1 and count up. The same way that `bash` does it.
 
+::left::
+
+```makefile
+say_hello=Gob is a co-op, $1
+
+.PHONY: all
+all:
+	@echo $(call say_hello,dude)
+```
+
+::right::
+```bash
+$ make
+Gob is a co-op, dude
+```
+
+---
+layout: applcommon-two-cols-header
+---
+
+
+# defines
+
+- The preferred to write functions because it makes it obvious what is a function and what is a variable
+- Since functions can be hard to remember what the arguments are, comments are used to document
+
+
+::left::
+
+```makefile
+# Returns a string of the obvious.
+# $1 Who the sentence is directed at.
+define say_hello
+Gob is a co-op, $1
+endef
+
+.PHONY: all
+all:
+	@echo $(call say_hello,dude)
+
+```
+
+::right::
+```bash
+$ make
+Gob is a co-op, dude
+```
+
+---
+layout: applcommon-two-cols-header
 ---
 
 # defines
 
-- the way we prefer to write functions
+- Multiple lines can be used to string together tasks.
+- Remember each call still occurs within a subshell.
+
+::left::
+
+```makefile
+# Creates a file with contents and prints it out
+# $1 file
+# $2 contents
+define create_file_with_contents
+echo Making File $1
+echo $2 > file.txt
+cat file.txt
+endef
+
+.PHONY: all
+all:
+	@$(call create_file_with_contents,test.txt, This is only a test)
+
+```
+
+::right::
+```bash
+$ make
+Making File test.txt
+This is only a test
+$ ls
+file.txt
+
+```
 
 ---
 
