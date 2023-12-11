@@ -131,10 +131,10 @@ layout: applcommon-two-cols-header
 ::left::
 
 ```makefile
-# Creates a file with contents and prints it out
+# Creates a file with text and prints it out
 # $1 file
 # $2 contents
-define create_file_with_contents
+define create_file_with_text
 echo Making File $1
 echo $2 > file.txt
 cat file.txt
@@ -142,7 +142,7 @@ endef
 
 .PHONY: all
 all:
-	@$(call create_file_with_contents,test.txt, This is only a test)
+	@$(call create_file_with_text,test.txt, file contents)
 
 ```
 
@@ -150,7 +150,7 @@ all:
 ```bash
 $ make
 Making File test.txt
-This is only a test
+file contents
 $ ls
 file.txt
 
@@ -160,14 +160,48 @@ file.txt
 
 # eval
 
-- generate makefile code
+- Allows for the generation of makefile code that is not constant.
+  - Variables, targets, rules can all be generated
+
+```makefile
+.PHONY: all
+all: $(PRINTS)
+
+# $1 Creates a rule with that name and prints it
+define print =
+.PHONY: $1
+$1:
+	@echo $1
+endef
+
+$(foreach string,$(PRINTS),$(eval $(call print,$(string))))
+```
+
+```bash
+$ make PRINTS="test foo hello"
+test
+foo
+hello
+```
 
 ---
 
-# gmsl
+# GNU Make Standard Library (gmsl)
 
-- Hopefully you never need to go this deep
+- [Adds a ton of additional functionally](https://gmsl.jgc.org/)
+  - Integer Arithmetic and Logic
+  - List Manipulation
+- Generally recommended as a last resort
+
+```makefile
+xcode_version:=$(strip $(subst version:,,$(shell pkgutil --pkg-info=com.apple.pkg.CLTools_Executables | grep version)))
+xcode_major_version:=$(firstword $(subst ., ,$(xcode_version)))
+
+ifeq ($(call gte,$(xcode_major_version),15), $(true))
+  LDFLAGS+=-Wl,-ld_cla
+endif
+```
+
+A very annoying way to check if the XCode version is greater or equal to 15. If so, add an `LDFLAG`.
 
 ---
-
-# move onto conditionals in another file?

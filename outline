@@ -1,36 +1,36 @@
 - Building/Toolchains
   - What is a toolchain?
-    - Probably find a good definition
-    - Lots of parts, but modern compilers tend to do many of them for you unless you request otherwise
+    - Probably find a good definition (done)
+    - Lots of parts, but modern compilers tend to do many of them for you unless you request otherwise (done)
     - Parts of a C/C++ toolchain
       - Preprocessor
-        - Replaces macros with their definitions
-        - Pastes in header and other files that are included with `#include`
-        - gcc -E to run preprocessor
+        - Replaces macros with their definitions (done)
+        - Pastes in header and other files that are included with `#include` (done)
+        - gcc -E to run preprocessor (done)
       - Compiler
-        - Generates assembly from code in high-level language
-        - gcc -S to run compiler and get the assembly out
+        - Generates assembly from code in high-level language (done)
+        - gcc -S to run compiler and get the assembly out (done)
       - Assembler
-        - Why is this separate from the compiler?
-          - Lets us write assembly, for one
-          - Allows the same assembler to be used with many language-specific front ends
-        - Can generate runnable binaries or relocatable object files
-        - gcc -c to run assembler and get object file out
+        - Why is this separate from the compiler? (done)
+          - Lets us write assembly, for one (done)
+          - Allows the same assembler to be used with many language-specific front ends (done)
+        - Can generate runnable binaries or relocatable object files (done)
+        - gcc -c to run assembler and get object file out (done)
       - Linker
-        - Resolves all the references between object files
+        - Resolves all the references between object files (done)
         - Linker script configures it to tell it where to put everything
-        - Poops out a map file to tell you what it did
+        - Poops out a map file to tell you what it did (done)
 
   - Object files
-    - Pieces of a program that can be put together by the linker
-      - Includes symbols available for other object files to use
-      - Includes unresolved references that can be resolved using symbols exported by other object files
-      - Includes relocation information since the object files doesn't get a "home" in memory until linking
+    - Pieces of a program that can be put together by the linker (done)
+      - Includes symbols available for other object files to use (done)
+      - Includes unresolved references that can be resolved using symbols exported by other object files (done)
+      - Includes relocation information since the object files doesn't get a "home" in memory until linking (done)
     - Relocatable whatever
-    - objdump to dump symbol table and relocations(?)
-      - `nm` also does this?
-    - objdump to disassemble
-    - `static` vs `extern`
+    - objdump to dump symbol table and relocations(?) (done)
+      - `nm` also does this? (I think I'm going to ignore this now for time)
+    - objdump to disassemble (done)
+    - `static` vs `extern` (Did not cover)
 
   - ELF
     - Executable and Linker Format
@@ -50,7 +50,7 @@
         - Allows images with holes in them
 
   - Debugging build problems? (seems out of place, but this stuff should probably go somewhere)
-    - See output of the preprocessor
+    - See output of the preprocessor (done)
     - Compiler error vs. Linker error
     - ...
 
@@ -64,9 +64,10 @@
   - Order-only prerequisites (done)
   - Conditionals (done)
   - Functions/defines (done)
-  - eval
+  - eval (done)
   - Pattern rules
-  - gmsl
+  - gmsl (done)
+
   - Automatic rules for C (Implicit rules https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html)
   - Generated dependencies (.d files)
   - Recursive make
