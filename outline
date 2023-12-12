@@ -33,16 +33,16 @@
     - `static` vs `extern` (Did not cover)
 
   - ELF
-    - Executable and Linker Format
-    - Includes the actually code and whatnot
+    - Executable and Linker Format (done)
+    - Includes the actually code and whatnot (done)
     - Includes a bunch of extra crap
       - Debug symbols (DWARF (play on ELF, has no acronym meaning), usually)
-    - Usually debug with this
+    - Usually debug with this (done)
 
-  - bin
+  - bin (done)
     - Raw ass binary data
 
-  - mot/srec, ihex
+  - mot/srec, ihex (done)
     - Human readable
     - Why?
       - Encodes address information
@@ -51,7 +51,7 @@
 
   - Debugging build problems? (seems out of place, but this stuff should probably go somewhere)
     - See output of the preprocessor (done)
-    - Compiler error vs. Linker error
+    - Compiler error vs. Linker error (done)
     - ...
 
 - Makefiles

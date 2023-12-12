@@ -3,3 +3,5 @@ artifacts
 hello-world/hello
 *.out
 *.o
+*.s
+*.S

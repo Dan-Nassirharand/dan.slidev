@@ -173,6 +173,7 @@ function.h:4:3: error: redeclaration of enumerator ‘Function_Defaults’
 # Object Files
 
 - Non-executable files containing relocatable code, sections, debug symbols and symbol table that need to be filled in when linking.
+  - GCC uses ELF formatting (more on this later)
 - `objdump` is used to get information from a object file.
 <!-- I hope this isn't something you need to do on the regular -->
 - `gcc -c main.c` and then `objdump -x main.o` shows many things the linker will need to take this relocatable code and complete the binary.
@@ -192,16 +193,54 @@ SYMBOL TABLE:
 
 # Linker
 
-- Uses a linker file and the object files to take all the relocatable code and create a final executable binary
+- Uses a linker file and the object files to take all the relocatable code and create a final executable binary or library
   - Resolves all the symbols in each object file
 - The linker file directs the linker where to place sections of code in memory.
   - A `map` file can be exported at link time to help the user know exactly where the code is addressed
+  - `-Wl,-Map=<name>.map` if passing in from GCC
   - Full instruction on how to make one in the Start-up Code class.
 
 - Options the the compiler and linker can change the final binary significantly, from optimizations to stripping unused code
   - Even the order of the object files and libraries can matter
 
 - `ld` is the specific binary for the linker, but it is almost always invoked through `gcc`.
+
+---
+
+# ELF (Executable and Linker Format) Files
+
+- Linkers generally output an ELF file by default
+- Contain all the same information the linked item, similar to a object file
+- If the linked item was an executable, ELF files can be run directly
+- ELF files can be used to manipulate the image further, create other types of executables
+- Since ELF files contain all the data of an executable, this is what is debugged instead of other file types
+- `objdump` can be used to parse ELF files
+
+<!-- More on other file formats in a second -->
+
+---
+
+# DWARF
+
+- If you want to debug, add `-g` when compiling and linking.
+- Adds DWARF debug symbols to the ELF files which allows for smooth debugging and tracing back to the source.
+- These symbols are added to the ELF file.
+
+---
+
+# `file` command
+
+- Used to determine what a file is and what programs can be run on it
+
+```bash
+$ file a.out
+a.out: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=94a37b58deb36de7beae30b483125e4e380ca8a5, for GNU/Linux 3.2.0, not stripped
+```
+
+```bash
+$ file function.c
+function.c: C source, ASCII text
+```
 
 ---
 
@@ -231,6 +270,31 @@ collect2: error: ld returned 1 exit status
 
 ---
 
-ELF
+# Other Binary File Formats
 
-bin/mot/srec/ihex
+- For platforms that do not have an OS, ELF files are too complex to easily run
+- Other file formats strip all unnecessary data except for address, data and data validation
+
+---
+
+# bin
+- `.bin` files
+- Start at a single address and continue as a sequence of bytes
+- Special tools are needed to inspect the binary files
+
+---
+
+# SREC
+- `.mot` or `.srec` extension
+- Developed by Motorola and is the primary format at Appliance Park.
+  - `.apl` is an SREC with an GEA Image Header on it
+- Supports gaps in the images because addresses are specified in the file format
+- [Wikipedia](https://en.wikipedia.org/wiki/SREC_(file_format))
+
+---
+
+# Intel Hex
+- `.hex` extension
+- Developed by intel
+- Pretty simlar to SREC,
+- [Wikipedia](https://en.wikipedia.org/wiki/Intel_HEX)
