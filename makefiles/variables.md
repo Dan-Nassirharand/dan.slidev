@@ -197,3 +197,40 @@ foo bar
 <!--
 https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
 -->
+
+---
+
+# "Arrays"
+
+- Variables with spaces between values act like arrays.
+  - All the functionality expected array functionality, such as easy indexing is missing.
+- Operations to the "array" are easily add and apply a function to all values in the array
+
+```makefile
+SRC:=test.c main.c
+
+SRC+=foo.c # results in SRC=test.c main.c foo.c
+```
+
+<!--
+Will have a slide showing this in functions
+-->
+
+---
+
+# Substitution References
+
+- A quick way to modify the string inside a variable
+- `$(var:a=b)`
+  - `var`: the variable to modify
+  - `a`: the text to replace
+  - `b`: the text to replace to
+
+```makefile
+foo := a.o b.o l.a c.o
+bar := $(foo:.o=.c)
+```
+
+Results in : `bar=a.c b.c l.a c.c`
+
+This example comes directly from the [make manual](https://www.gnu.org/software/make/manual/html_node/Substitution-Refs.html).

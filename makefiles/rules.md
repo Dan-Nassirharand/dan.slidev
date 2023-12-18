@@ -249,5 +249,98 @@ done
 ```
 
 ---
+layout: applcommon-two-cols-header
+---
 
-# Explicit Rules
+# Pattern Rules
+
+- Used to build a class of files with with a matching file path, using the wildcard `%`
+- Pattern rules do not search the file system for files, targets need to be requested as a dependency in another rule
+- Using automatic variables is required in most cases
+
+::left::
+```makefile
+.PHONY: all
+all: main.c foo.c bar.c
+
+%.o: %.c
+	gcc -c $< -o $@
+```
+
+::right::
+
+```bash
+$ make
+gcc -c main.c -o main.o
+gcc -c foo.c -o foo.o
+gcc -c bar.c -o bar.o
+```
+
+<!--
+These are called implicit rules, since they are how to make a class of rules
+-->
+
+---
+
+# Pattern Rules
+
+- The `%` has to match exactly for the entire rule
+- No error message when `%` does not match, outside of `No rule to make file X`.
+
+```makefile
+# Example from image.mk, this makes the .c file for compiling parametric data into the .elf for debug purposes
+$(OUTPUT_DIR)/%.c: $(OUTPUT_DIR)/%.pxml %.prexml %.postxml $(OUTPUT_DIR)
+	@echo Creating $@...
+	@$(LUA53) $(LUA_XML_TO_C) --xml $< --pre $*.prexml --post $*.postxml --output $@ --header --endianness $(ENDIANNESS)
+```
+
+---
+
+# Automatic Rules
+
+- Make comes built in with predefined implicit rules.
+  - Here at AP we refer to these as Automatic Rules because that sounds more reasonable.
+- The list of rules can be found [here](https://www.gnu.org/software/make/manual/html_node/Catalogue-of-Rules.html) and the variables that go into them
+  - The list of variables can be found [here](https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html)
+- Enables the compiling of very simple programs without a makefile!
+
+``` bash
+$ make main
+cc     main.c   -o main
+$ ./main
+Hello, World!
+```
+
+- Outside of being super useful on tiny programs, it gives us a standard format to follow when making our makefiles.
+
+---
+layout: applcommon-two-cols-header
+---
+
+# Adding Dependencies
+
+- Dependencies do not have to be added when a rule is defined and can be added before or after a rule is defined
+
+::left::
+```makefile
+.PHONY: all
+all:
+	@echo $^
+
+all: test
+
+.PHONY: test
+test:
+	@echo inside test rule
+```
+
+::right::
+```bash
+$ make
+inside test rule
+test
+```
+
+<!--
+This is a fundamental concept that makes make amazing.
+-->

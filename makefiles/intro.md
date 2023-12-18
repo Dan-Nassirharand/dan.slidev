@@ -57,3 +57,7 @@ Ponderings:
 ---
 src: ./rules.md
 ---
+
+---
+src: ./advanced.md
+---

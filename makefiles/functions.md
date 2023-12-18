@@ -203,5 +203,3 @@ endif
 ```
 
 A very annoying way to check if the XCode version is greater or equal to 15. If so, add an `LDFLAG`.
-
----

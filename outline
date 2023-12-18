@@ -65,15 +65,15 @@
   - Conditionals (done)
   - Functions/defines (done)
   - eval (done)
-  - Pattern rules
   - gmsl (done)
+  - Pattern rules (done)
 
-  - Automatic rules for C (Implicit rules https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html)
-  - Generated dependencies (.d files)
-  - Recursive make
-  - Non-recursive make
+  - Automatic rules for C (Implicit rules https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html) (done)
+  - Generated dependencies (.d files) (done)
+  - Recursive make (done)
+  - Non-recursive make (done)
   - Debugging tools
-    - `$(info)`
+    - `$(info)` (done)
     - `make --dry-run`
     - `make --debug`
     - `make --trace`
@@ -82,7 +82,7 @@
   - Combines make/ninja/etc., toolchains, other tools, etc. in a way that restricts options but presents a simpler interface
   - make is not a build system, or if it is, it's a very low level build system
     - ninja is another low level build system that's more like an assembler
-  - Others are higher level (check on this)
+  - Others are higher level (check on this) (done)
     - Meson
     - SCons?
     - xmake
@@ -118,23 +118,25 @@
     - host tools (todo need to extract this)
 
 - Lab/homework
+  - For fun, look at all the linker arguments in applcommon/build/test/*.in (done)
   - Would like to make it so that incorrect dependencies can make an incorrect build
     - Missing the .ds where you change a header file and it all goes to hell
     - Don't have dependencies on build flags or the build system itself
   - Part 1
     - C file
+      - Use gcc -E to find the file with the missing include guards (done)
       - gcc -E, -S, -c
       - addr2line
-      - objdump
+      - objdump (done)
       - nm?
-      - `file`
+      - `file` (done)
     - Simple C program
-      - Start with shell commands to compile
+      - Start with shell commands to compile (done)
       - Makefile auto rules
       - Then manually write rules (wildcard?)
-        - Dependencies between .o and .c
-        - Dependencies between .elf and .os
-        - Change a .c, see the .o get rebuilt and then the .elf
+        - Dependencies between .o and .c (done)
+        - Dependencies between .elf and .os (done)
+        - Change a .c, see the .o get rebuilt and then the .elf (done)
       - Then add dependency file generation
         - Change a .h, see the .o get rebuilt
       - In-tree build
