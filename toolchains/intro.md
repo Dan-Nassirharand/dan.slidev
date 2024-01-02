@@ -140,6 +140,7 @@ function.h:4:3: error: redeclaration of enumerator ‘Function_Defaults’
   - Toolchains for cross compilers are prefixed to keep them from conflicting with other toolchains, such as [rx-elf-gcc](https://github.com/geappliances/build-tools.kpit-rx-8.3.0.202305-gdb-12.1-linux-rev2/tree/master/bin)
 
 - `gcc -S` invokes the preprocessor and compiler. Results in assembly.
+- The option `-o <filename>` specifies where to put the results.
 
 ---
 

@@ -61,3 +61,7 @@ src: ./rules.md
 ---
 src: ./advanced.md
 ---
+
+---
+src: ./v2.md
+---

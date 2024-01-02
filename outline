@@ -92,7 +92,7 @@
 
 - GEA Build System (v2)
   - Why?
-    - History lesson v1
+    - History lesson v1 (done)
     - Fine control over flags/configurations for different files
     - Reusable libraries
     - Hard stuff like out-of-tree builds by default

@@ -6,6 +6,26 @@ layout: section
 
 ---
 
+# GNU Make Standard Library (gmsl)
+
+- [Adds a ton of additional functionally](https://gmsl.jgc.org/)
+  - Integer Arithmetic and Logic
+  - List Manipulation
+- Generally recommended as a last resort
+
+```makefile
+xcode_version:=$(strip $(subst version:,,$(shell pkgutil --pkg-info=com.apple.pkg.CLTools_Executables | grep version)))
+xcode_major_version:=$(firstword $(subst ., ,$(xcode_version)))
+
+ifeq ($(call gte,$(xcode_major_version),15), $(true))
+  LDFLAGS+=-Wl,-ld_cla
+endif
+```
+
+A very annoying way to check if the XCode version is greater or equal to 15. If so, add an `LDFLAG`.
+
+---
+
 # Recursive Make
 
 - Using a make recipe to run a different makefile without including its contents within the calling makefile
