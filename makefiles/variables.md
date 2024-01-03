@@ -212,6 +212,12 @@ SRC:=test.c main.c
 SRC+=foo.c # results in SRC=test.c main.c foo.c
 ```
 
+```makefile
+SRC+=\ # use \ to continue on multiple lines
+  foo.c \
+  main.c
+```
+
 <!--
 Will have a slide showing this in functions
 -->
