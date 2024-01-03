@@ -101,6 +101,7 @@ src/Utilities/utils.h:
   - `-MP` Tells the compiler to add a phony target for each dependency other than the main file. Stops errors on incremental builds when removing header files
   - `-MMD` Only output dependencies for user files and not system files. If doing system development, `-MD` might be better
 
+- A call to compile a C file and make a dependency file at the same time would look like: `@$(CC) -x c -MMD -MP -MF "$(@:%.o=%.d)" -MT "$@" $(CPPFLAGS) $(CFLAGS) -c $< -o $@`
 ---
 
 # Dependency Files

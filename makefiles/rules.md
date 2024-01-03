@@ -36,10 +36,11 @@ Tabs look like a little arrow and it is almost impossible to work on Makefiles w
 ---
 layout: applcommon-two-cols-header
 ---
+
 # Echoing
-- Each recipe will is printed on the command line when executed
+- Each recipe is printed on the command line when executed
 - Great for debugging, bad for normal use
-- Using `@` at the start of a line will suppress the echoing
+- Using `@` at the start of a line will suppress the echoing and only print the standard output or standard error of the commands
 
 
 ::left::
@@ -92,6 +93,7 @@ Need to mention global silence after variables
 clean:
 	@rm -rf build
 ```
+
 - If added as a prerequisite to another rule, it will cause that rule to always be rerun, since this dependency is always executed
 
 ---

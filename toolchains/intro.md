@@ -4,7 +4,7 @@
 
 - Toolchains often do multiple parts of compiling process unless requested otherwise.
 
-- There are many types of toolchains, but GCC for C will be the main toolchain of discussion as it is the compiler of choice for the common code team when selecting new toolchains.
+- There are many types of toolchains, but GCC for C will be the main toolchain of discussion, because it is the compiler of choice for the common code team when selecting new toolchains.
 
 ---
 
@@ -19,6 +19,7 @@ flowchart LR
   Assembler --> objects[.o]
   objects --> Linker
   linkerFile[Linker File] --> Linker
+  Libraries --> Linker
   Linker --> output[Executable File]
 ```
 
@@ -112,7 +113,7 @@ int main(void)
 
 ---
 
-# Preprocessor include guards
+# Preprocessor Include Guards
 
 - Notice that `#include "function.h"` was included twice
 - Something like this can happen if multiple headers have the same includes
@@ -124,14 +125,27 @@ function.h:4:3: error: redeclaration of enumerator ‘Function_Defaults’
     4 |   Function_Defaults = 5
 ```
 
+```c
+// function.h
+#ifndef FUNCTION_H
+#define FUNCTION_H
+
+enum {
+  Function_Defaults = 5
+};
+
+void Function_Hello(int arg);
+
+#endif
+```
+
 ---
 
 # Compiler
 
 - Takes source code from one language into another language.
 - Normally, this is from a higher level language to a lower level language
-  - C to assembly
-  - C++ to assembly
+  - C to assembly/C++ to assembly
 
 - A cross compiler generates binary code for an architecture different from the build computer.
   - These exist because its impossible or impractical to compile on the target architecture.
@@ -140,7 +154,7 @@ function.h:4:3: error: redeclaration of enumerator ‘Function_Defaults’
   - Toolchains for cross compilers are prefixed to keep them from conflicting with other toolchains, such as [rx-elf-gcc](https://github.com/geappliances/build-tools.kpit-rx-8.3.0.202305-gdb-12.1-linux-rev2/tree/master/bin)
 
 - `gcc -S` invokes the preprocessor and compiler. Results in assembly.
-- The option `-o <filename>` specifies where to put the results.
+- The option `-o <filename>` specifies the output filename.
 
 ---
 
@@ -189,6 +203,7 @@ SYMBOL TABLE:
 # Libraries
 
 - A collection of object files that can be shared and used at link time with different projects.
+- These are created using the archiver, `AR`
 
 ---
 
@@ -199,7 +214,7 @@ SYMBOL TABLE:
 - The linker file directs the linker where to place sections of code in memory.
   - A `map` file can be exported at link time to help the user know exactly where the code is addressed
   - `-Wl,-Map=<name>.map` if passing in from GCC
-  - Full instruction on how to make one in the Start-up Code class.
+  - Full instruction on how to make one in the Startup Code class.
 
 - Options the the compiler and linker can change the final binary significantly, from optimizations to stripping unused code
   - Even the order of the object files and libraries can matter
@@ -213,8 +228,8 @@ SYMBOL TABLE:
 - Linkers generally output an ELF file by default
 - Contain all the same information the linked item, similar to a object file
 - If the linked item was an executable, ELF files can be run directly
-- ELF files can be used to manipulate the image further, create other types of executables
-- Since ELF files contain all the data of an executable, this is what is debugged instead of other file types
+- ELF files can be used to manipulate the image further and create other types of executables
+- Since ELF files contain all the data of an executable, debugging an .elf gives the most information
 - `objdump` can be used to parse ELF files
 
 <!-- More on other file formats in a second -->
@@ -278,7 +293,7 @@ collect2: error: ld returned 1 exit status
 
 ---
 
-# bin
+# Binary Files
 - `.bin` files
 - Start at a single address and continue as a sequence of bytes
 - Special tools are needed to inspect the binary files
@@ -297,5 +312,5 @@ collect2: error: ld returned 1 exit status
 # Intel Hex
 - `.hex` extension
 - Developed by intel
-- Pretty simlar to SREC,
+- Pretty similar to SREC
 - [Wikipedia](https://en.wikipedia.org/wiki/Intel_HEX)

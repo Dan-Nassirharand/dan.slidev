@@ -157,9 +157,9 @@ layout: applcommon-two-cols-header
 
 ::left::
 
-- These variables are available in each target
+- These variables are available in each rule
 - Allow for makefiles to become much more generic
-- There are eight automatic variables
+- There are [eight automatic variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html)
 
 Here are the most useful:
 - `$@`: The target of the rule
@@ -203,7 +203,7 @@ https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
 # "Arrays"
 
 - Variables with spaces between values act like arrays.
-  - All the functionality expected array functionality, such as easy indexing is missing.
+  - All the functionality expected from arrays, but things such as easy indexing is missing.
 - Operations to the "array" are easily add and apply a function to all values in the array
 
 ```makefile
