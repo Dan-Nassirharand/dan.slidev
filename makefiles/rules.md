@@ -263,7 +263,7 @@ layout: applcommon-two-cols-header
 ::left::
 ```makefile
 .PHONY: all
-all: main.c foo.c bar.c
+all: main.o foo.o bar.o
 
 %.o: %.c
 	gcc -c $< -o $@
@@ -321,7 +321,7 @@ layout: applcommon-two-cols-header
 
 # Adding Dependencies
 
-- Dependencies do not have to be added when a rule is defined and can be added before or after a rule is defined
+- Dependencies can be added after a rule is defined
 
 ::left::
 ```makefile

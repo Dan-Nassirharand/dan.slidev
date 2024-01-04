@@ -1,10 +1,15 @@
 # What is a toolchain?
 
-- A toolchain is a set of distinct software development tools that are linked (or chained) together by specific stages such as GCC, binutils and glibc (a portion of the GNU Toolchain) to produce binary code. [[1]](https://elinux.org/Toolchains)
+- A toolchain is a set of distinct software development tools that are linked (or chained) together by specific stages to produce binary code. [[1]](https://elinux.org/Toolchains).
+ - `gcc`, binutils and glibc (a portion of the GNU Toolchain), `gdb`
 
 - Toolchains often do multiple parts of compiling process unless requested otherwise.
 
-- There are many types of toolchains, but GCC for C will be the main toolchain of discussion, because it is the compiler of choice for the common code team when selecting new toolchains.
+- There are many types of toolchains, but `gcc` is the toolchain of choice at GEA
+  - Free
+  - Many different `gcc` ports for embedded processors
+  - Easy to use
+
 
 ---
 
@@ -22,8 +27,6 @@ flowchart LR
   Libraries --> Linker
   Linker --> output[Executable File]
 ```
-
-- This is is a very basic case and when compiling something as simple as a `Hello, World!` program, it gets even simpler.
 
 - Additional steps are added based on the types of sources needed
   - LVGL takes `.jpg`/`.png`s and turns them into `.c` files, which can then be sent through the compiler
@@ -147,14 +150,14 @@ void Function_Hello(int arg);
 - Normally, this is from a higher level language to a lower level language
   - C to assembly/C++ to assembly
 
+- For GCC, you can invoke the C compiler using `gcc` and the C++ compiler using `g++`.
+  - Toolchains for cross compilers are prefixed to keep them from conflicting with other toolchains, such as [rx-elf-gcc](https://github.com/geappliances/build-tools.kpit-rx-8.3.0.202305-gdb-12.1-linux-rev2/tree/master/bin)
+
 - A cross compiler generates binary code for an architecture different from the build computer.
   - These exist because its impossible or impractical to compile on the target architecture.
 
-- For GCC, you can invoke the C compiler using `gcc` and the C++ compiler using `gcc`.
-  - Toolchains for cross compilers are prefixed to keep them from conflicting with other toolchains, such as [rx-elf-gcc](https://github.com/geappliances/build-tools.kpit-rx-8.3.0.202305-gdb-12.1-linux-rev2/tree/master/bin)
-
 - `gcc -S` invokes the preprocessor and compiler. Results in assembly.
-- The option `-o <filename>` specifies the output filename.
+- The option `gcc -o <filename>` specifies the output filename.
 
 ---
 
@@ -172,7 +175,7 @@ void Function_Hello(int arg);
     - Some UL tasks
 
 - For GCC, you can invoke the assembler using `as` for assembly files
-- `gcc -c` invokes the preprocessor, compiler and assembler and results in an object file
+- `gcc -c` invokes the preprocessor, compiler and assembler and results in an `object file` (`.o`)
 
 ---
 
@@ -181,7 +184,7 @@ void Function_Hello(int arg);
 - Absolute code is code that is fixed in a particular location and is executable
 
 - Relocatable Code is code that can go anywhere but is eventually turned into absolute code by a part of the toolchain, normally the linker, so the code can be executed.
-  - Durning large compiling processes, relocatable code is stored in `.o` files until it can be handled by the linker.
+  - Durning large compiling processes, relocatable code is stored in `object files` (`.o`) files until it can be handled by the linker.
 
 ---
 
@@ -209,7 +212,7 @@ SYMBOL TABLE:
 
 # Linker
 
-- Uses a linker file and the object files to take all the relocatable code and create a final executable binary or library
+- Uses a linker file and the object files to take all the relocatable code and create a final executable binary
   - Resolves all the symbols in each object file
 - The linker file directs the linker where to place sections of code in memory.
   - A `map` file can be exported at link time to help the user know exactly where the code is addressed
@@ -240,7 +243,6 @@ SYMBOL TABLE:
 
 - If you want to debug, add `-g` when compiling and linking.
 - Adds DWARF debug symbols to the ELF files which allows for smooth debugging and tracing back to the source.
-- These symbols are added to the ELF file.
 
 ---
 
@@ -297,6 +299,7 @@ collect2: error: ld returned 1 exit status
 - `.bin` files
 - Start at a single address and continue as a sequence of bytes
 - Special tools are needed to inspect the binary files
+- Does not support holes
 
 ---
 

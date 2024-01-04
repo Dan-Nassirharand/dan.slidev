@@ -8,7 +8,7 @@ text-if-true
 endif
 ```
 
-- else if statements:
+- else-if statements:
 
 ```makefile
 conditional-directive-one
@@ -24,7 +24,7 @@ endif
 
 # `ifeq`/`ifneq`
 
-- `make` has lots of formatting options, but standard here is to use `ifeq (arg1, arg2)`
+- `make` has lots of formatting options, but standard at GEA is to use `ifeq (arg1, arg2)`
 
 ```makefile
 ifeq ($(JLINK), Y) # notice the variable is expanded
@@ -43,7 +43,7 @@ layout: applcommon-two-cols-header
 
 # `ifdef`/`ifndef`
 
-- If the value of the variable is empty, `ifdef` returns `true`.
+- If the value of the variable is empty, `ifdef` returns `false`.
 
 ::left::
 
