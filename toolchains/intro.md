@@ -195,6 +195,7 @@ void Function_Hello(int arg);
 - `objdump` is used to get information from a object file.
 <!-- I hope this isn't something you need to do on the regular -->
 - `gcc -c main.c` and then `objdump -x main.o` shows many things the linker will need to take this relocatable code and complete the binary.
+  - On Mac, the default `gcc` is linked to `LLVM` and the option `--macho` is required
 
 ```bash
 SYMBOL TABLE:
@@ -217,6 +218,7 @@ SYMBOL TABLE:
 - The linker file directs the linker where to place sections of code in memory.
   - A `map` file can be exported at link time to help the user know exactly where the code is addressed
   - `-Wl,-Map=<name>.map` if passing in from GCC
+    - On Mac, the default `gcc` is linked to `LLVM` and is the option `-Wl,-map,<name.map>`
   - Full instruction on how to make one in the Startup Code class.
 
 - Options the the compiler and linker can change the final binary significantly, from optimizations to stripping unused code
