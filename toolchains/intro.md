@@ -294,6 +294,7 @@ collect2: error: ld returned 1 exit status
 
 - For platforms that do not have an OS, ELF files are too complex to easily run
 - Other file formats strip all unnecessary data except for address, data and data validation
+- You can take an ELF file an convert it to other types by using `objcopy`
 
 ---
 
@@ -310,6 +311,7 @@ collect2: error: ld returned 1 exit status
 - Developed by Motorola and is the primary format at Appliance Park.
   - `.apl` is an SREC with an GEA Image Header on it
 - Supports gaps in the images because addresses are specified in the file format
+- Using `objcopy -O srec <input elf> <output file>` will create an SREC file.
 - [Wikipedia](https://en.wikipedia.org/wiki/SREC_(file_format))
 
 ---
