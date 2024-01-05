@@ -131,6 +131,6 @@ DEPS:=$(SRC:%=%.d) # Takes whatever is in SRC and adds a `.d` to it
 - Make is awesome because its relatively simple, useful outside of C/C++, easy to run and easy to install
 
 Other Options:
-  - [meson](https://mesonbuild.com/): A very user friendly build system with lots of languages supported by default. This is the upcoming build system
+  - [meson](https://mesonbuild.com/): A very user friendly build system with lots of languages supported by default. This is the upcoming build system in open source projects
   - [cmake](https://cmake.org/): Lots of built in functionality meant to make C/C++ easier, but it seems like it would be very difficult to teach a whole organization.
   - [Autotools](https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html): Meant to help generate makefiles so any user can compile on their system.
