@@ -38,7 +38,9 @@ boot-loader:
 	$(MAKE) -C lib/boot-loader -f boot-loader.mk RELEASE=Y DEBUG=N build_all
 ```
 
-No need to pass `-j` because using `$(MAKE)` uses the current process make and manages how many threads each `make` is using through a `jobserver`.
+- No need to pass `-j` because using `$(MAKE)` uses the current process make and manages how many threads each `make` is using through a `jobserver`.
+
+- `-C` stands for change directory, never `cd <folder> && $(MAKE)`
 
 ---
 layout: applcommon-two-cols-header
@@ -96,19 +98,20 @@ src/Utilities/utils.h:
 # Dependency Files
 
 - Options to generate while compiling are:
-  - `-MF "$(@:%.o=%.d)"` Outputs the dependency file to the same name as the `.o`, but instead swaps it to a `.d` extension
+  - `-MF "$(@:%=%.d)"` Outputs the dependency file to the same name as the `.o`, but instead adds it to a `.d` after the `.o`
   - `-MT "$@"` This tells the compiler to keep directory components inside the generated rule
   - `-MP` Tells the compiler to add a phony target for each dependency other than the main file. Stops errors on incremental builds when removing header files
   - `-MMD` Only output dependencies for user files and not system files. If doing system development, `-MD` might be better
 
-- A call to compile a C file and make a dependency file at the same time would look like: `@$(CC) -x c -MMD -MP -MF "$(@:%.o=%.d)" -MT "$@" $(CPPFLAGS) $(CFLAGS) -c $< -o $@`
+- A call to compile a C file and make a dependency file at the same time would look like:
+  - `gcc -x c -MMD -MP -MF "$(@:%=%.d)" -MT "$@" $(CPPFLAGS) $(CFLAGS) -c $< -o $@`
 ---
 
 # Dependency Files
 
 - The generated rules need to modify the existing rules in the makefile, so the files are included non-recursively.
 - Since the dependency files do not exist on the first run, the `-` symbol must be used
-  - `-` tells `make` to ignore errors, this can even be done in recipes but not recommended
+  - `-` tells `make` to ignore errors
 
 ```makefile
 DEPS:=$(SRC:%=%.d) # Takes whatever is in SRC and adds a `.d` to it
