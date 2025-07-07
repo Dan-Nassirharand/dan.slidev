@@ -377,18 +377,18 @@ layout: applcommon-two-cols-header
 ::left::
 
 ```html
-<img src="text-top.png" class="m-5 h-40" />
+<img src="/assets/text-top.png" class="m-5 h-40" />
 ```
 
-<img src="text-top.png" class="m-5 h-40" />
+<img src="/assets/text-top.png" class="m-5 h-40" />
 
 ::right::
 
 ```html
-<img src="text-top.png" class="m-15 h-40" />
+<img src="/assets/text-top.png" class="m-15 h-40" />
 ```
 
-<img src="text-top.png" class="m-15 h-40" />
+<img src="/assets/text-top.png" class="m-15 h-40" />
 
 ---
 
