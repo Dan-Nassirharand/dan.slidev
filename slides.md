@@ -2,133 +2,116 @@
 layout: intro
 ---
 
-# Slidev
-Chris Beeler
+# SQL
+Dan Nassirharand
 
 ---
 
-# Why?
+# Overview
 
-- The slides are in plain text which allows for Git to render diffs
-- Using Git and GitHub allow for easy collaboration
-  - Storage in GitHub prevents important presentations from getting lost when employees leave
-- Code renders nicely and has a copy button!
+- Relational Algebra (RA)
+  - Relations
+  - Operations
+- Database Management System (DBMS)
+- SQL
+- Practicum
 
-```js
-console.log('This looks amazing');
-```
+<!--
+- High level
+  - I assume you know nothing
+  - Good refresher/overview of the basics
+  - See resources for more in-depth info
 
-```makefile
-.PHONY: all
-all:
-	@echo Done!
-```
+We will be working with relational databases
+  I will provide resources for you to explore this vast topic
 
-- Amazing presentation tools
-- Supports Dark Mode and Light Mode
+I will go through the conceptual parts and pieces first then apply what we learned with real life examples
+-->
 
----
-
-# Presentation Tools
-
-- When presenting, `slidev` hosts the slides via a web server and you can display through your browser
-  - Others can connect and browse through the slides as they desire!
-  - Connect now! VPN in and my IP is [ip:port](ip:port)
-  - You can open the web server as many times as you wish, and put them on different slides
-- The presenter connects to [ip:port/presenter](ip:port/presenter) to get slide notes
-- A slide overview is available at [ip:port/overview](ip:port/overview).
-- Draw tools are available
-
-This is all printed out on the terminal when you run `npm run present`
----
-
-# Outputs
-
-- Can output a PDF via `npm run export` in this repo
-- Can host slides via GitHub Pages
-- [More info on exports](https://sli.dev/guide/exporting)
+<!-- TODO  maybe add a note about the difference beween theory and application (i.e. relation vs table) -->
 
 ---
 
-# Getting Started
+# Database
 
-- Make a slides.md in the root of the project:
+<v-click>
+  "A database is an organized collection of structured information, or data, typically stored electronically in a computer system." - <a href="https://www.oracle.com/database/what-is-database/" target="_blank">Oracle</a>
+</v-click>
+<br><br><br>
+<v-clicks depth=2>
 
-````markdown
-# Slidev
+- Tables (a.k.a. Relations)
+  - Relational Schema
+  - Attribute
+  - Record
 
-Hello World
+</v-clicks>
 
----
+<!--
 
-# Page 2
+- Database: [click]A thing with stuff in it
 
-Directly use code blocks for highlighting
-
-```
-console.log('Hello, World!')
-```
-
----
-
-# Page 3
-````
-
-Stolen from [sli.dev](https://sli.dev/guide/#markdown-syntax)
+-->
 
 ---
 
-# Theme
+# Relational Schema
 
-- Themes are the style your slides use
-- Navigate to the [Theme Gallery](https://sli.dev/themes/gallery) to select a theme
-- You may need to do a `npm install` command if downloading a new theme not already available in the `package.json`
-- To select a theme, use a formatter block at the top of the first slide:
+<div>
+  "A database schema defines how data is organized within a relational database" - <a href="https://www.ibm.com/think/topics/database-schema" target="_blank">IBM</a>
+</div>
 
-```markdown
----
-theme: seriph
----
+- Acts as the blueprint for your databse
+  - What does it look like?
+  - What type of data is stored?
 
-# Title
-
-Contents
-```
+<img src="/assets/table/schema.png" class="m-15 h-40" />
 
 ---
 
-# Layouts
+# Attribute
 
-- Layouts are how you make slides look differently, think of the intro slide.
-- The layouts available to you depend on the theme you selected.
-  - Navigate to the [Theme Gallery](https://sli.dev/themes/gallery) find your theme
-  - Once selected, look at the Readme to see what layouts are available.
-- Use formatter blocks to select a layout
-- The default is this title and content layout you are looking at
+- Attributes are properties or characteristics of an entity
+- Attributes are used to describe the entity.
+
+\- <a href="https://www.geeksforgeeks.org/dbms/attributes-in-dbms/" target="_blank">GFG</a>
 
 
-```markdown
----
-layout: intro
----
-
-# The Intro Title
-Cool text - Used in the first slide
+<img src="/assets/table/attribute.png" class="m-15 h-40" />
 
 ---
-layout: quote
+
+# Record
+
+- An entity that exists within the relation
+
+<img src="/assets/table/record.png" class="m-15 h-40" />
 ---
 
-This is a new slide
-```
+# Relational Algebra
+https://www.geeksforgeeks.org/dbms/introduction-of-relational-algebra-in-dbms/
+
+The main purpose of relational algebra is to define operators that transform one or more input relations to an output relation. - <a href="https://en.wikipedia.org/wiki/Relational_algebra" target="_blank">Wikipedia</a>
+
+## Operations
+- Selection (σ)
+- Projection (π)
+- Union (U)
+- Set Difference (-)
+- More ...
 
 ---
-layout: statement
+
+# Database Management System (DBMS)
+
+
 ---
 
-# This is a new slide
+# SQL
 
-hello
+---
+
+# Practicum
 
 ---
 layout: two-cols
