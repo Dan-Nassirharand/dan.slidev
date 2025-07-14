@@ -104,300 +104,78 @@ The main purpose of relational algebra is to define operators that transform one
 
 # Database Management System (DBMS)
 
+<div>
+  "A DBMS is a system that allows users to create, modify, and query databases while ensuring data integrity, security, and efficient data access." - <a href="https://www.geeksforgeeks.org/dbms/introduction-of-dbms-database-management-system-set-1/" target="_blank">GFG</a>
+</div>
+<br><br>
+
+- Data Modeling
+- Data Storage and Retrieval
+- Concurrency Control
+- Data Integrity and Security
+- Backup and Recovery
+
 
 ---
 
 # SQL
+
+<div>
+SQL is a domain-specific language used to manage data, especially in a relational database management system (RDBMS). - <a href="https://en.wikipedia.org/wiki/SQL" target="_blank">Wikipedia</a>
+</div>
+<br><br>
+
+- Defines a standard that is implemented by a DBMS
+  - An implementation will dffer from one DBMS to another
+  - Most do not fully adhere to the standard
 
 ---
 
 # Practicum
 
 ---
-layout: two-cols
----
 
-# Slots
+### Staff
 
-- Slots allow for you to interact with a layout
-- `::name::` before the content how you direct content into particular areas of the layout
-- This example is using the `two-cols` layout and `::right::` is used to place foo in the right column
-
-```markdown
-
-... The text above
-
-::right::
-
-foo
-```
-
-::right::
-
-foo
+| SSO | Role | YOE | Team    |
+|-----|------|-----|---------|
+| 1   | P1   | 2   | Laundry |
+| 2   | P2   | 1   | WiFi    |
+| 3   | P3   | 3   | Cooking |
+| 4   | P2   | 2   | Laundry |
+| 5   | P1   | 1   | WiFi    |
+| 6   | P3   | 2   | Cooking |
 
 ---
 
-# Custom Layouts
+### Building
 
-- Did you notice how `foo` was level with the title slots of the last slide?
-- We've made our own custom layouts you can use, or you can make your own. Find them [here](https://github.com/geappliances/applcommon.slidev-layouts).
-  - Making a folder `layouts` at the root of the folder and submoduling it in that folder will make the layouts available
-
-
-```markdown
----
-layout: applcommon-two-cols-header
----
-
-# Example
-
-- Header info that spans both columns, optional
-
-::left::
-
-Hello
-
-::right::
-
-Same level as hello!
-```
-
----
-layout: applcommon-two-cols-header
----
-
-# Example
-
-- Header info that spans both columns, optional
-
-::left::
-
-Hello
-
-::right::
-
-Same level as hello!
-
----
-layout: applcommon-two-cols-header
----
-
-# Some Content From A Course!
-- Each recipe is printed on the command line when executed
-- Great for debugging, bad for normal use
-- Using `@` at the start of a line will suppress the echoing and only print the standard output or standard error of the commands
-
-
-::left::
-```makefile
-.PHONY: all
-all:
-	echo hello
-```
-
-```makefile
-.PHONY: all
-all:
-	@echo hello
-```
-
-::right::
-```bash
-$ make
-echo hello
-hello
-```
-
-```bash
-$ make
-hello
-```
-
----
-src: ./a-different-file.md
----
+| Building | Team    |
+|----------|---------|
+| AP1      | Laundry |
+| AP3      | Cooking |
+| AP5      | WiFi    |
 
 ---
 
-# Presenter notes
+### Assignment
 
-```markdown
----
-layout: cover
----
-
-# Page 1
-
-This is the cover page.
-
-<!-- This is a note -->
+| SSO | Function |
+|-----|----------|
+| 1   | Software |
+| 2   | QA       |
+| 3   | Software |
+| 4   | Software |
+| 5   | Electrical |
+| 6   | Mechanical |
 
 ---
 
-# Page 2
+### Function
 
-<!-- This is NOT a note because it precedes the content of the slide -->
-
-The second page
-
-<!--
-This is another note
--->
-```
-
----
-layout: applcommon-two-cols-header
----
-
-# Line Highlighting
-
-- Described [here](https://sli.dev/guide/syntax#line-highlighting)
-- Put line numbers within brackets `{}` to highlight them
-
-::left::
-
-````
-```{2,3}
-function add(
-  a: Ref<number> | number,
-  b: Ref<number> | number
-) {
-  return computed(() => unref(a) + unref(b))
-}
-```
-````
-
-::right::
-
-```ts {2,3}
-function add(
-  a: Ref<number> | number,
-  b: Ref<number> | number
-) {
-  return computed(() => unref(a) + unref(b))
-}
-```
-
----
-layout: applcommon-two-cols-header
----
-
-# Line Highlighting With Line Numbers
-
-::left::
-
-````
-```{6,7}{lines:true,startLine:5}
-function add(
-  a: Ref<number> | number,
-  b: Ref<number> | number
-) {
-  return computed(() => unref(a) + unref(b))
-}
-```
-````
-
-::right::
-```ts {6,7}{lines:true,startLine:5}
-function add(
-  a: Ref<number> | number,
-  b: Ref<number> | number
-) {
-  return computed(() => unref(a) + unref(b))
-}
-```
-
----
-layout: applcommon-two-cols-header
----
-
-# Line Highlighting Per Click
-
-- Each click is separated by `|`
-
-::left::
-
-````
-```{2-3|5|all}
-function add(
-  a: Ref<number> | number,
-  b: Ref<number> | number
-) {
-  return computed(() => unref(a) + unref(b))
-}
-```
-````
-
-::right::
-
-```ts {2-3|5|all}
-function add(
-  a: Ref<number> | number,
-  b: Ref<number> | number
-) {
-  return computed(() => unref(a) + unref(b))
-}
-```
-
----
-layout: applcommon-two-cols-header
----
-
-# Images
-
-- Images can be a bit tricky.
-- Instead of using the default slidev imports, I've had a much easier time with HTML.
-
-```html
-<img src="<path to image>" class="m-12 h-80" />
-```
-
-- `m`: is margin in pixels
-- `h` is hight in pixels
-
-
-::left::
-
-```html
-<img src="/assets/text-top.png" class="m-5 h-40" />
-```
-
-<img src="/assets/text-top.png" class="m-5 h-40" />
-
-::right::
-
-```html
-<img src="/assets/text-top.png" class="m-15 h-40" />
-```
-
-<img src="/assets/text-top.png" class="m-15 h-40" />
-
----
-
-# Making Images
-
-- Use the [draw.io vscode extension](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio)
-- Save the `.drawio` in the repo so others can modify the image in the future
-
-- Make an image
-- Export it
-- Layers
-
----
-
-# Supports Mermaid
-
-
-```mermaid
-flowchart LR
-  sources[.c] --> Preprocessor
-  headers[.h] --> Preprocessor
-  Preprocessor --> Compiler
-  Compiler --> Assembler
-  Assembler --> objects[.o]
-  objects --> Linker
-  linkerFile[Linker File] --> Linker
-  Libraries --> Linker
-  Linker --> output[Executable File]
-```
+| Function   | Description          | No. Staff |
+|------------|----------------------|-----------|
+| Software   | Writes code          | 57 |
+| Electrical | Works on circuits    | 43 |
+| Mechanical | Designs hardware     | 28 |
+| QA         | Tests products       | 13 |
