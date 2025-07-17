@@ -16,42 +16,20 @@ Dan Nassirharand
 - SQL
 - Practicum
 
-<!--
-- High level
-  - I assume you know nothing
-  - Good refresher/overview of the basics
-  - See resources for more in-depth info
-
-We will be working with relational databases
-  I will provide resources for you to explore this vast topic
-
-I will go through the conceptual parts and pieces first then apply what we learned with real life examples
--->
-
-<!-- TODO  maybe add a note about the difference beween theory and application (i.e. relation vs table) -->
 
 ---
 
 # Database
 
-<v-click>
+<div>
   "A database is an organized collection of structured information, or data, typically stored electronically in a computer system." - <a href="https://www.oracle.com/database/what-is-database/" target="_blank">Oracle</a>
-</v-click>
+</div>
 <br><br><br>
-<v-clicks depth=2>
 
 - Tables (a.k.a. Relations)
   - Relational Schema
   - Attribute
   - Record
-
-</v-clicks>
-
-<!--
-
-- Database: [click]A thing with stuff in it
-
--->
 
 ---
 
@@ -60,8 +38,9 @@ I will go through the conceptual parts and pieces first then apply what we learn
 <div>
   "A database schema defines how data is organized within a relational database" - <a href="https://www.ibm.com/think/topics/database-schema" target="_blank">IBM</a>
 </div>
+<br><br>
 
-- Acts as the blueprint for your databse
+- Acts as the blueprint for your database
   - What does it look like?
   - What type of data is stored?
 
@@ -102,6 +81,20 @@ The main purpose of relational algebra is to define operators that transform one
 
 ---
 
+# SQL
+
+<div>
+SQL is a domain-specific language used to manage data, especially in a relational database management system (RDBMS). - <a href="https://en.wikipedia.org/wiki/SQL" target="_blank">Wikipedia</a>
+</div>
+<br><br>
+
+- Defines a standard that is implemented by a DBMS
+  - An implementation will differ from one DBMS to another
+  - Most do not fully adhere to the standard
+
+
+---
+
 # Database Management System (DBMS)
 
 <div>
@@ -115,19 +108,6 @@ The main purpose of relational algebra is to define operators that transform one
 - Data Integrity and Security
 - Backup and Recovery
 
-
----
-
-# SQL
-
-<div>
-SQL is a domain-specific language used to manage data, especially in a relational database management system (RDBMS). - <a href="https://en.wikipedia.org/wiki/SQL" target="_blank">Wikipedia</a>
-</div>
-<br><br>
-
-- Defines a standard that is implemented by a DBMS
-  - An implementation will dffer from one DBMS to another
-  - Most do not fully adhere to the standard
 
 ---
 
