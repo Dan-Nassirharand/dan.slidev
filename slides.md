@@ -57,7 +57,7 @@ Dan Nassirharand
 # Attribute
 
 <div>
-  A columns in a table
+  A column in a table
 </div>
 <br><br>
 
@@ -93,6 +93,7 @@ The main purpose of relational algebra is to define operators that transform one
 - Projection (π)
 - Union (U)
 - Set Difference (-)
+- Natural Join (⋈)
 - More ...
 
 ---
@@ -129,49 +130,7 @@ SQL is a domain-specific language used to manage data, especially in a relationa
 
 # Practicum
 
----
+- Any questions before we start?
 
-### Staff
-
-| SSO | Role | YOE | Team    |
-|-----|------|-----|---------|
-| 1   | P1   | 2   | Laundry |
-| 2   | P2   | 1   | WiFi    |
-| 3   | P3   | 3   | Cooking |
-| 4   | P2   | 2   | Laundry |
-| 5   | P1   | 1   | WiFi    |
-| 6   | P3   | 2   | Cooking |
 
 ---
-
-### Building
-
-| Building | Team    |
-|----------|---------|
-| AP1      | Laundry |
-| AP3      | Cooking |
-| AP5      | WiFi    |
-
----
-
-### Assignment
-
-| SSO | Function |
-|-----|----------|
-| 1   | Software |
-| 2   | QA       |
-| 3   | Software |
-| 4   | Software |
-| 5   | Electrical |
-| 6   | Mechanical |
-
----
-
-### Function
-
-| Function   | Description          | No. Staff |
-|------------|----------------------|-----------|
-| Software   | Writes code          | 57 |
-| Electrical | Works on circuits    | 43 |
-| Mechanical | Designs hardware     | 28 |
-| QA         | Tests products       | 13 |
