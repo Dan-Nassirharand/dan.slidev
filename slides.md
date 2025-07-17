@@ -24,7 +24,13 @@ Dan Nassirharand
 <div>
   "A database is an organized collection of structured information, or data, typically stored electronically in a computer system." - <a href="https://www.oracle.com/database/what-is-database/" target="_blank">Oracle</a>
 </div>
-<br><br><br>
+<br>
+
+- Storage
+- Access
+- Retreival
+
+<br>
 
 - Tables (a.k.a. Relations)
   - Relational Schema
@@ -50,8 +56,13 @@ Dan Nassirharand
 
 # Attribute
 
+<div>
+  A columns in a table
+</div>
+<br><br>
+
 - Attributes are properties or characteristics of an entity
-- Attributes are used to describe the entity.
+- Attributes are used to describe the entity
 
 \- <a href="https://www.geeksforgeeks.org/dbms/attributes-in-dbms/" target="_blank">GFG</a>
 
@@ -61,6 +72,11 @@ Dan Nassirharand
 ---
 
 # Record
+
+<div>
+  A row in a table
+</div>
+<br><br>
 
 - An entity that exists within the relation
 
